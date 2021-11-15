@@ -1,21 +1,43 @@
 import { StatusBar } from "expo-status-bar";
-import { Text } from "react-native";
 import React from "react";
 import styled from "styled-components/native";
 
-export default function App() {
+const App = () => {
   return (
     <Container>
-      <Text>I love to eat spaghetti arrabiata</Text>
+      <StyledText size={80}>{"Leap Year"}</StyledText>
+      <ButtonWide>
+        <ButtonTextWrapper>
+          <StyledText>Start</StyledText>
+        </ButtonTextWrapper>
+      </ButtonWide>
       <StatusBar style="auto" />
     </Container>
   );
-}
+};
 
-// Styled Component
 const Container = styled.View`
   flex: 1;
   background-color: #ff0e64;
+  padding: 10px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 `;
+
+const ButtonWide = styled.TouchableOpacity`
+  width: 100%;
+`;
+
+const StyledText = styled.Text<{ size?: number }>`
+  font-size: ${(props) => (props.size ? `${props.size}px` : "30px")};
+  font-weight: 100;
+`;
+
+const ButtonTextWrapper = styled.View`
+  padding: 10px 0;
+  background-color: white;
+  border-radius: 35px;
+  align-items: center;
+`;
+
+export default App;
