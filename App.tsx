@@ -1,21 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { Text } from "react-native";
+import React from "react";
+import styled from "styled-components/native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <Container>
       <Text>I love to eat spaghetti arrabiata</Text>
       <StatusBar style="auto" />
-    </View>
+    </Container>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ff0e64',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// Styled Component
+const Container = styled.View`
+  flex: 1;
+  background-color: #ff0e64;
+  align-items: center;
+  justify-content: center;
+`;
