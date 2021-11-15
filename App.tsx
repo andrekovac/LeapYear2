@@ -6,7 +6,7 @@ const App = () => {
   return (
     <Container>
       <StyledText size={80}>{"Leap Year"}</StyledText>
-      <ButtonWide>
+      <ButtonWide onPress={() => console.log("Button pressed")}>
         <ButtonTextWrapper>
           <StyledText>Start</StyledText>
         </ButtonTextWrapper>
