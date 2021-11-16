@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { VFC, FC, useState } from "react";
 import { Button } from 'react-native';
 import styled from "styled-components/native";
 
@@ -13,28 +13,41 @@ const App = () => {
       {hasPressedButton ? (
         <>
           <StyledText>{"You entered the App"}</StyledText>
-          {/* Button component from the react-native package */}
-          <Button
-            title="Return"
-            color="black"
-            onPress={() => setHasPressedButton(false)}
-          />
+          <ReturnButton text="Return" onPress={() => setHasPressedButton(false)} />
         </>
       ) : (
         <>
-          {/* <></> is a React Fragment. It does not render any visual UI but assures that exactly one React element is returned. */}
           <StyledText size={80}>{"Leap Year"}</StyledText>
-          <ButtonWide onPress={() => setHasPressedButton(true)}>
-            <ButtonTextWrapper>
-              <StyledText>Start</StyledText>
-            </ButtonTextWrapper>
-          </ButtonWide>
+          <StartButton  onPress={() => setHasPressedButton(true)}>{"Start"}</StartButton>
         </>
       )}
       <StatusBar style="auto" />
     </Container>
   );
 };
+
+type ReturnButtonProps = {
+  text: string;
+  onPress: () => void;
+}
+const ReturnButton: VFC<ReturnButtonProps> = ({ text, onPress }) => (
+  <Button
+    title={text}
+    color="black"
+    onPress={onPress}
+  />
+);
+
+type StartButtonProps = {
+  onPress: () => void;
+}
+const StartButton: FC<StartButtonProps> = ({ onPress, children }) => (
+  <ButtonWide onPress={onPress}>
+    <ButtonTextWrapper>
+      <StyledText>{children}</StyledText>
+    </ButtonTextWrapper>
+  </ButtonWide>
+)
 
 const Container = styled.View`
   flex: 1;
