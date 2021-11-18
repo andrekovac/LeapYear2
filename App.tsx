@@ -14,7 +14,7 @@ const App = () => {
       {hasPressedButton ? (
         <HomeScreen onPress={() => setHasPressedButton(false)} />
       ) : (
-        <WelcomeScreen onPress={() => setHasPressedButton(true)} />
+        <WelcomeScreen hasPressedButton={hasPressedButton} onPress={() => setHasPressedButton(true)} />
       )}
       <StatusBar style="auto" />
     </Container>
