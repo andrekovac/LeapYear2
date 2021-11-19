@@ -11,7 +11,6 @@ import ReturnButton from "../../components/ReturnButton";
 import { StyledText } from "../../components/StartButton/styles";
 import leapYearText from "../../util/leapYear";
 import {
-  AnimatedWrapper,
   KeyboardContainer,
   TextInputWrapper,
   YearTextInput,
