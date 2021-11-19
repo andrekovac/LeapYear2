@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StyledText renders correctly 1`] = `
+<Text
+  style={
+    Object {
+      "color": "black",
+      "fontSize": 30,
+      "fontWeight": "200",
+      "textAlign": "center",
+    }
+  }
+/>
+`;
+
+exports[`StyledText renders correctly with color prop 1`] = `
+<Text
+  color="blue"
+  style={
+    Object {
+      "color": "blue",
+      "fontSize": 30,
+      "fontWeight": "200",
+      "textAlign": "center",
+    }
+  }
+/>
+`;
+
+exports[`StyledText renders correctly with size prop 1`] = `
+<Text
+  size={100}
+  style={
+    Object {
+      "color": "black",
+      "fontSize": 100,
+      "fontWeight": "200",
+      "textAlign": "center",
+    }
+  }
+/>
+`;
