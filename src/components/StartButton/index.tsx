@@ -1,6 +1,8 @@
 import React, { FC } from "react";
-import { ButtonTextWrapper, StyledText } from "./styles";
 import styled from "styled-components/native";
+
+import StyledText from "../StyledText";
+import { ButtonTextWrapper } from "./styles";
 
 
 type StartButtonProps = {
