@@ -1,11 +1,11 @@
-import React, { useState, VFC } from "react";
+import React, { useEffect, useRef, useState, VFC } from "react";
 import {
+  Animated,
   Keyboard,
   Platform,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import styled from "styled-components/native";
 
 import ReturnButton from "../../components/ReturnButton";
 import { StyledText } from "../../components/StartButton/styles";
@@ -22,11 +22,30 @@ interface Props {
 }
 const HomeScreen: VFC<Props> = ({ onPress }) => {
   const [year, setYear] = useState<string>("2021");
+  // Animated value of fade-in animation
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  const fadeIn = () => {
+    fadeAnim.setValue(0);
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 600,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  useEffect(() => {
+    fadeIn();
+  }, []);
 
   return (
     <KeyboardContainer behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <Wrapper>
+        <AnimatedWrapper
+          style={{
+            opacity: fadeAnim,
+          }}
+        >
           <StyledText size={70}>Leap Year</StyledText>
           <View>
             <StyledText size={24}>{leapYearText(year)}</StyledText>
@@ -40,15 +59,10 @@ const HomeScreen: VFC<Props> = ({ onPress }) => {
             </TextInputWrapper>
           </View>
           <ReturnButton text="Return" onPress={onPress} />
-        </Wrapper>
+        </AnimatedWrapper>
       </TouchableWithoutFeedback>
     </KeyboardContainer>
   );
 };
-
-export const Wrapper = styled.View`
-  flex: 1;
-  justify-content: space-around;
-`;
 
 export default HomeScreen;
