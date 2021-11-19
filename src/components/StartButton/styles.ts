@@ -4,9 +4,16 @@ export const ButtonWide = styled.TouchableOpacity`
   width: 100%;
 `;
 
-export const StyledText = styled.Text<{ size?: number }>`
-  font-size: ${(props) => (props.size ? `${props.size}px` : "30px")};
-  font-weight: 100;
+type StyledTextProps = {
+  size?: number;
+  color?: string;
+};
+
+export const StyledText = styled.Text<StyledTextProps>`
+  font-size: ${props => (props.size ? props.size + "px" : "30px")};
+  font-weight: 200;
+  text-align: center;
+  color: ${props => props.color ?? "black"};
 `;
 
 export const ButtonTextWrapper = styled.View`
