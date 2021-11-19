@@ -9,6 +9,7 @@ import {
 
 import ReturnButton from "../../components/ReturnButton";
 import { StyledText } from "../../components/StartButton/styles";
+import withFadeAnimation from "../../components/withFadeAnimation";
 import leapYearText from "../../util/leapYear";
 import {
   AnimatedWrapper,
@@ -65,4 +66,7 @@ const HomeScreen: VFC<Props> = ({ onPress }) => {
   );
 };
 
-export default HomeScreen;
+export default withFadeAnimation({
+  shouldFadeIn: true,
+  speed: 500,
+})(HomeScreen);
