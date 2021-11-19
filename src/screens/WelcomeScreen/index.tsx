@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, VFC } from "react";
 import { Animated, Easing } from "react-native";
-import styled from "styled-components/native";
 
 import StartButton from "../../components/StartButton";
+import { AnimatedText, AnimatedWrapper } from "./styles";
 
 interface Props {
   onPress: () => void;
@@ -10,6 +10,7 @@ interface Props {
 }
 const WelcomeScreen: VFC<Props> = ({ onPress, hasPressedButton }) => {
   const introAnim = useRef(new Animated.Value(0)).current;
+  const fadeOutAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     bounceIn();
@@ -27,8 +28,25 @@ const WelcomeScreen: VFC<Props> = ({ onPress, hasPressedButton }) => {
     }).start();
   };
 
+  const fadeOut = () => {
+    Animated.timing(fadeOutAnim, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start(onPress);
+  };
+
   return (
-    <>
+    <AnimatedWrapper
+      style={{
+        opacity: fadeOutAnim.interpolate({
+          // Animated.Value goes from 0 to 1
+          inputRange: [0, 1],
+          // opacity value moves into the opposite direction: from 1 to 0
+          outputRange: [1, 0],
+        }),
+      }}
+    >
       <AnimatedText
         style={{
           transform: [
@@ -45,15 +63,9 @@ const WelcomeScreen: VFC<Props> = ({ onPress, hasPressedButton }) => {
       >
         LeapYear
       </AnimatedText>
-      <StartButton onPress={onPress}>{"Start"}</StartButton>
-    </>
+      <StartButton onPress={fadeOut}>{"Start"}</StartButton>
+    </AnimatedWrapper>
   );
 };
-
-const AnimatedText = styled(Animated.Text)<{ size?: number }>`
-  font-size: ${(props) => (props.size ? `${props.size}px` : "30px")};
-  font-weight: 100;
-  text-align: center;
-`;
 
 export default WelcomeScreen;
