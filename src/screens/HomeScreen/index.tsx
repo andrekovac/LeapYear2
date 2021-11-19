@@ -76,9 +76,10 @@ const HomeScreen: VFC<Props> = ({ onPress }) => {
                   maxLength={4}
                   onChangeText={setYear}
                   placeholder={"2021"}
+                  testID="yearText"
                 />
               </GradientWrapper>
-              <ReturnButton text="Return" onPress={handlePress} />
+              <ReturnButton text="Return" onPress={handlePress} testID="returnButton" />
             </Bottom>
           </BottomWrapper>
         </TouchableWithoutFeedback>
