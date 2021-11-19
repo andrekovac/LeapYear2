@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState, VFC } from "react";
+import React, { useState, VFC } from "react";
 import {
-  Animated,
   Keyboard,
   Platform,
   TouchableWithoutFeedback,
@@ -12,9 +11,9 @@ import { StyledText } from "../../components/StartButton/styles";
 import withFadeAnimation from "../../components/withFadeAnimation";
 import leapYearText from "../../util/leapYear";
 import {
-  AnimatedWrapper,
   KeyboardContainer,
   TextInputWrapper,
+  Wrapper,
   YearTextInput,
 } from "./styles";
 
@@ -23,30 +22,11 @@ interface Props {
 }
 const HomeScreen: VFC<Props> = ({ onPress }) => {
   const [year, setYear] = useState<string>("2021");
-  // Animated value of fade-in animation
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-
-  const fadeIn = () => {
-    fadeAnim.setValue(0);
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 600,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  useEffect(() => {
-    fadeIn();
-  }, []);
 
   return (
     <KeyboardContainer behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <AnimatedWrapper
-          style={{
-            opacity: fadeAnim,
-          }}
-        >
+        <Wrapper>
           <StyledText size={70}>Leap Year</StyledText>
           <View>
             <StyledText size={24}>{leapYearText(year)}</StyledText>
@@ -60,7 +40,7 @@ const HomeScreen: VFC<Props> = ({ onPress }) => {
             </TextInputWrapper>
           </View>
           <ReturnButton text="Return" onPress={onPress} />
-        </AnimatedWrapper>
+          </Wrapper>
       </TouchableWithoutFeedback>
     </KeyboardContainer>
   );

@@ -5,7 +5,7 @@ export const KeyboardContainer = styled.KeyboardAvoidingView`
   flex: 1;
 `;
 
-export const AnimatedWrapper = styled(Animated.View)`
+export const Wrapper = styled.View`
   flex: 1;
   justify-content: space-around;
 `;
