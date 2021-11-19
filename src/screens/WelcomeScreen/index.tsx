@@ -3,6 +3,7 @@ import { Animated, Easing } from "react-native";
 
 import StartButton from "../../components/StartButton";
 import { AnimatedText, AnimatedWrapper } from "./styles";
+import useFadeOutAnimation from "../../hooks/useFadeOutAnimation";
 
 interface Props {
   onPress: () => void;
@@ -10,7 +11,10 @@ interface Props {
 }
 const WelcomeScreen: VFC<Props> = ({ onPress, hasPressedButton }) => {
   const introAnim = useRef(new Animated.Value(0)).current;
-  const fadeOutAnim = useRef(new Animated.Value(0)).current;
+
+  const [opacityStyle, startFadeOutAnimation] = useFadeOutAnimation({
+    onUnmountCallback: onPress,
+  });
 
   useEffect(() => {
     bounceIn();
@@ -28,24 +32,9 @@ const WelcomeScreen: VFC<Props> = ({ onPress, hasPressedButton }) => {
     }).start();
   };
 
-  const fadeOut = () => {
-    Animated.timing(fadeOutAnim, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start(onPress);
-  };
-
   return (
     <AnimatedWrapper
-      style={{
-        opacity: fadeOutAnim.interpolate({
-          // Animated.Value goes from 0 to 1
-          inputRange: [0, 1],
-          // opacity value moves into the opposite direction: from 1 to 0
-          outputRange: [1, 0],
-        }),
-      }}
+      style={opacityStyle}
     >
       <AnimatedText
         style={{
@@ -63,7 +52,7 @@ const WelcomeScreen: VFC<Props> = ({ onPress, hasPressedButton }) => {
       >
         LeapYear
       </AnimatedText>
-      <StartButton onPress={fadeOut}>{"Start"}</StartButton>
+      <StartButton onPress={startFadeOutAnimation}>{"Start"}</StartButton>
     </AnimatedWrapper>
   );
 };
