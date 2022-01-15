@@ -3,6 +3,7 @@ import {
   Animated,
   Easing,
   Keyboard,
+  LayoutAnimation,
   Platform,
   TouchableWithoutFeedback,
 } from "react-native";
@@ -42,11 +43,16 @@ const HomeScreen: VFC<Props> = ({ onPress }) => {
     }).start();
   };
 
-  const handlePress = () => {
+  const handleReturnButtonPress = () => {
     onPress();
     setYear("2021");
     elasticAnim.setValue(0);
   };
+  
+  const handleTextChange = (text: string) => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    setYear(text);
+  }
 
   return (
     <Wrapper>
@@ -74,12 +80,12 @@ const HomeScreen: VFC<Props> = ({ onPress }) => {
                 <YearTextInput
                   keyboardType={"numeric"}
                   maxLength={4}
-                  onChangeText={setYear}
+                  onChangeText={handleTextChange}
                   placeholder={"2021"}
                   testID="yearText"
                 />
               </GradientWrapper>
-              <ReturnButton text="Return" onPress={handlePress} testID="returnButton" />
+              <ReturnButton text="Return" onPress={handleReturnButtonPress} testID="returnButton" />
             </Bottom>
           </BottomWrapper>
         </TouchableWithoutFeedback>
