@@ -12,39 +12,30 @@ exports[`StyledText renders correctly 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
-      "opacity": 1,
-      "width": "100%",
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "borderRadius": 35,
+        "paddingBottom": 10,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 10,
+      },
+    ]
   }
 >
-  <View
+  <Text
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "white",
-          "borderRadius": 35,
-          "paddingBottom": 10,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 10,
-        },
-      ]
+      Object {
+        "color": "black",
+        "fontSize": 30,
+        "fontWeight": "200",
+        "textAlign": "center",
+      }
     }
   >
-    <Text
-      style={
-        Object {
-          "color": "black",
-          "fontSize": 30,
-          "fontWeight": "200",
-          "textAlign": "center",
-        }
-      }
-    >
-      Start Button Snapshot
-    </Text>
-  </View>
+    Start Button Snapshot
+  </Text>
 </View>
 `;

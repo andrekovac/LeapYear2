@@ -4,10 +4,9 @@ import styled from "styled-components/native";
 import StyledText from "../StyledText";
 import { ButtonTextWrapper } from "./styles";
 
-
 type StartButtonProps = {
   onPress: () => void;
-}
+};
 const StartButton: FC<StartButtonProps> = ({ onPress, children }) => (
   <ButtonWide onPress={onPress}>
     <ButtonTextWrapper>
@@ -16,7 +15,7 @@ const StartButton: FC<StartButtonProps> = ({ onPress, children }) => (
   </ButtonWide>
 );
 
-const ButtonWide = styled.TouchableOpacity`
+const ButtonWide = styled.TouchableWithoutFeedback`
   width: 100%;
 `;
 
