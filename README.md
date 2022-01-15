@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://expo.io/@andrusch/PhotoFavorite">
+  <a href="https://expo.dev/@andrusch/LeapYear">
     <img alt="Photo Favorite Logo" src="./assets/icon.png" width="100" />
   </a>
 </p>
@@ -14,7 +14,14 @@ Tiny React Native App which displays whether the current year is a leap year.
     <img alt="Leap Year App on iOS" src="./docs/LeapYearApp.gif" width="160" />
 </p>
 
-## Run
+## Run on your phone
+
+1. Go to [https://expo.dev/@andrusch/LeapYear](https://expo.dev/@andrusch/LeapYear)
+2. Scan the QR Code with your phone. It might ask you to download the [Expo Go App](https://expo.dev/client).
+
+## Development: Run app on local computer
+
+Clone this repository, then
 
 1. Install dependencies
 
