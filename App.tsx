@@ -1,8 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
+import { Platform, UIManager } from "react-native";
 import styled from "styled-components/native";
 import HomeScreen from "./src/screens/HomeScreen";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
+
+if (
+  Platform.OS === 'android' &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 const App = () => {
   // React useState hook: If its value changes, it triggers a re-render of the component
