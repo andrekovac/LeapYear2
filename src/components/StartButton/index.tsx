@@ -16,7 +16,7 @@ const StartButton: FC<StartButtonProps> = ({ onPress, children }) => (
   </ButtonWide>
 );
 
-const ButtonWide = styled.TouchableOpacity`
+const ButtonWide = styled.TouchableWithoutFeedback`
   width: 100%;
 `;
 
