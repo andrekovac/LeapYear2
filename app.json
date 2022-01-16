@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "LeapYear",
+    "name": "Leap Year App",
     "slug": "LeapYear",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,7 +17,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.andrekovac.leapYear"
     },
     "android": {
       "adaptiveIcon": {
