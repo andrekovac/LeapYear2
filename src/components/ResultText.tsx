@@ -41,12 +41,11 @@ const ResultText: FunctionComponent<{ year?: string }> = ({ year }) => {
           ],
         }}
         size={90}
+        testID="resultText"
       >
         {year || "0"}
       </StyledText>
-      <StyledText>
-        {year && leapYearText(year, Part.second)}
-      </StyledText>
+      <StyledText>{year && leapYearText(year, Part.second)}</StyledText>
     </>
   );
 };

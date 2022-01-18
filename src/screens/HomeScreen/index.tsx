@@ -48,14 +48,14 @@ const HomeScreen: VFC<Props> = ({ onPress }) => {
     setYear("2021");
     elasticAnim.setValue(0);
   };
-  
+
   const handleTextChange = (text: string) => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setYear(text);
-  }
+  };
 
   return (
-    <Wrapper>
+    <Wrapper testID="welcome">
       <Top
         colors={["#ff0e64", "#ffcc70"]}
         start={[0.6, 0.1]}
@@ -85,7 +85,11 @@ const HomeScreen: VFC<Props> = ({ onPress }) => {
                   testID="yearText"
                 />
               </GradientWrapper>
-              <ReturnButton text="Return" onPress={handleReturnButtonPress} testID="returnButton" />
+              <ReturnButton
+                text="Return"
+                onPress={handleReturnButtonPress}
+                testID="returnButton"
+              />
             </Bottom>
           </BottomWrapper>
         </TouchableWithoutFeedback>

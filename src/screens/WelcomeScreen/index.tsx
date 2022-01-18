@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, VFC } from "react";
-import { Animated, Easing } from "react-native";
+import { Animated, Easing, View, Text } from "react-native";
 
 import StartButton from "../../components/StartButton";
 import { AnimatedText, AnimatedWrapper } from "./styles";
@@ -16,12 +16,12 @@ const WelcomeScreen: VFC<Props> = ({ onPress, hasPressedButton }) => {
     onUnmountCallback: onPress,
   });
 
-  useEffect(() => {
-    bounceIn();
-    return () => {
-      introAnim.setValue(0);
-    };
-  }, [hasPressedButton]);
+  // useEffect(() => {
+  //   bounceIn();
+  //   return () => {
+  //     introAnim.setValue(0);
+  //   };
+  // }, [hasPressedButton]);
 
   const bounceIn = () => {
     Animated.timing(introAnim, {
@@ -33,10 +33,15 @@ const WelcomeScreen: VFC<Props> = ({ onPress, hasPressedButton }) => {
   };
 
   return (
-    <AnimatedWrapper
-      style={opacityStyle}
-    >
+    <View>
+      <Text>Hello World</Text>
+    </View>
+  );
+
+  return (
+    <AnimatedWrapper style={opacityStyle}>
       <AnimatedText
+        accessibilityLabel="Text"
         style={{
           transform: [
             {
